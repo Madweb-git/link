@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to generate private chat links. Create instant chat rooms to connect with friends, colleagues, or clients securely.">
+    <meta name="keywords" content="chat link generator, private chat, secure messaging, instant chat room, web chat">
+    <meta name="author" content="Chat Link Generator">
+    <meta property="og:title" content="Instant Private Chat Link Generator">
+    <meta property="og:description" content="Create secure, private chat links to connect with anyone instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:image" content="https://yourwebsite.com/images/chat-preview.jpg">
+    <title>Instant Private Chat Link Generator | Secure Web Chat Tool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4bb543;
+            --warning-color: #f0ad4e;
+            --danger-color: #d9534f;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f7ff;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            color: var(--accent-color);
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-title i {
+            color: var(--accent-color);
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .input-field:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            border: 1px solid #ddd;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e9ecef;
+        }
+        
+        .btn-icon {
+            font-size: 1rem;
+        }
+        
+        .flex-row {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .flex-row .input-field {
+            flex: 1;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .alert-success {
+            background-color: rgba(75, 181, 67, 0.1);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+        }
+        
+        .alert-info {
+            background-color: rgba(72, 149, 239, 0.1);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        #chatContainer {
+            display: none;
+            border: 1px solid #e9ecef;
+            border-radius: var(--border-radius);
+            height: 400px;
+            overflow-y: auto;
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        #messages {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .message {
+            padding: 12px 16px;
+            border-radius: 18px;
+            max-width: 80%;
+            position: relative;
+            word-wrap: break-word;
+        }
+        
+        .received {
+            background-color: white;
+            color: var(--dark-color);
+            align-self: flex-start;
+            border: 1px solid #e9ecef;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .sent {
+            background-color: var(--primary-color);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .info-message {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: rgba(233, 236, 239, 0.5);
+            border-radius: var(--border-radius);
+        }
+        
+        .chat-controls {
+            display: none;
+            gap: 10px;
+        }
+        
+        .user-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background-color: var(--light-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-left: auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .feature {
+            background-color: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .feature-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .flex-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-comment-dots"></i>
+                <span>ChatLink</span>
+            </div>
+            <p class="tagline">Create instant, private chat rooms with a single link. No signups required. Secure and easy to use.</p>
+        </header>
+        
+        <div class="main-content">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-link"></i> Generate or Join a Chat</h2>
+                
+                <div id="generatorSection">
+                    <div class="input-group">
+                        <button id="generateButton" class="btn btn-primary">
+                            <i class="fas fa-plus-circle btn-icon"></i> Create New Chat Link
+                        </button>
+                    </div>
+                    
+                    <div class="input-group" id="linkGroup" style="display: none;">
+                        <label class="input-label">Your private chat link:</label>
+                        <div class="flex-row">
+                            <input type="text" id="chatLink" class="input-field" readonly>
+                            <button id="copyButton" class="btn btn-secondary">
+                                <i class="far fa-copy btn-icon"></i> Copy
+                            </button>
+                        </div>
+                        <div id="linkCopied" class="alert alert-success" style="display: none;">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Link copied to clipboard!</span>
+                        </div>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">
+                            Share this link with the person you want to chat with. They can open it in any browser.
+                        </p>
+                    </div>
+                    
+                    <div class="input-group" id="joinGroup">
+                        <label class="input-label">Or join an existing chat:</label>
+                        <div class="flex-row">
+                            <input type="text" id="joinLink" class="input-field" placeholder="Paste chat link here">
+                            <button id="joinButton" class="btn btn-primary">
+                                <i class="fas fa-sign-in-alt btn-icon"></i> Join
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="chatContainer">
+                    <div class="info-message" id="waitingMessage">
+                        <i class="fas fa-user-clock"></i> Waiting for someone to join this chat...
+                    </div>
+                    <div id="messages"></div>
+                </div>
+                
+                <div class="chat-controls" id="chatControls">
+                    <input type="text" id="messageInput" class="input-field" placeholder="Type your message...">
+                    <button id="sendButton" class="btn btn-primary">
+                        <i class="fas fa-paper-plane btn-icon"></i> Send
+                    </button>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Secure & Private</h3>
+                    <p class="feature-desc">All messages are encrypted and never stored on our servers. Your conversations stay between you and the recipient.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Instant Setup</h3>
+                    <p class="feature-desc">No downloads or signups required. Just generate a link and start chatting immediately.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="feature-title">Works Everywhere</h3>
+                    <p class="feature-desc">Accessible on any device with a web browser. Perfect for quick collaborations or private conversations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 ChatLink Generator. All rights reserved.</p>
+        <p>Need help? <a href="mailto:support@chatlink.example.com">Contact our support team</a></p>
+    </footer>
+
+    <script>
+        // SEO-friendly page title update
+        document.addEventListener('DOMContentLoaded', function() {
+            const originalTitle = document.title;
+            
+            function updateTitle(notification) {
+                if (notification) {
+                    document.title = `(${notification}) ${originalTitle}`;
+                } else {
+                    document.title = originalTitle;
+                }
+            }
+            
+            // Generate a random ID for the chat room
+            function generateRoomId() {
+                return 'room-' + Math.random().toString(36).substr(2, 12);
+            }
+            
+            // Get elements from the DOM
+            const generateButton = document.getElementById('generateButton');
+            const chatLink = document.getElementById('chatLink');
+            const linkGroup = document.getElementById('linkGroup');
+            const copyButton = document.getElementById('copyButton');
+            const linkCopied = document.getElementById('linkCopied');
+            const joinLink = document.getElementById('joinLink');
+            const joinButton = document.getElementById('joinButton');
+            const chatContainer = document.getElementById('chatContainer');
+            const waitingMessage = document.getElementById('waitingMessage');
+            const messages = document.getElementById('messages');
+            const chatControls = document.getElementById('chatControls');
+            const messageInput = document.getElementById('messageInput');
+            const sendButton = document.getElementById('sendButton');
+            
+            let roomId = '';
+            let isHost = false;
+            let peerConnection;
+            let dataChannel;
+            let unreadMessages = 0;
+            
+            // Generate a new chat link
+            generateButton.addEventListener('click', () => {
+                roomId = generateRoomId();
+                const url = window.location.origin + window.location.pathname + '?room=' + roomId;
+                chatLink.value = url;
+                linkGroup.style.display = 'block';
+                isHost = true;
+                chatContainer.style.display = 'block';
+                waitingMessage.style.display = 'block';
+                
+                // Scroll to chat container for better UX
+                chatContainer.scrollIntoView({ behavior: 'smooth' });
+                
+                // Initialize WebRTC
+                initializeWebRTC(true);
+                
+                // Track this event for analytics
+                console.log('New chat room created:', roomId);
+            });
+            
+            // Copy the chat link to clipboard
+            copyButton.addEventListener('click', () => {
+                chatLink.select();
+                document.execCommand('copy');
+                linkCopied.style.display = 'flex';
+                setTimeout(() => {
+                    linkCopied.style.display = 'none';
+                }, 3000);
+                
+                // Track this event for analytics
+                console.log('Chat link copied to clipboard');
+            });
+            
+            // Join an existing chat
+            joinButton.addEventListener('click', () => {
+                try {
+                    const url = new URL(joinLink.value);
+                    roomId = url.searchParams.get('room');
+                    
+                    if (roomId) {
+                        chatContainer.style.display = 'block';
+                        waitingMessage.style.display = 'none';
+                        chatControls.style.display = 'flex';
+                        
+                        // Initialize WebRTC
+                        initializeWebRTC(false);
+                        
+                        // Track this event for analytics
+                        console.log('User joined chat room:', roomId);
+                    } else {
+                        showError('Invalid chat link. Please check the link and try again.');
+                    }
+                } catch (e) {
+                    showError('Please enter a valid URL');
+                }
+            });
+            
+            // Check if URL has a room parameter (for when someone shares the link)
+            window.addEventListener('load', () => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const roomParam = urlParams.get('room');
+                
+                if (roomParam) {
+                    roomId = roomParam;
+                    chatLink.value = window.location.href;
+                    linkGroup.style.display = 'block';
+                    joinLink.value = window.location.href;
+                    
+                    // Show chat interface
+                    chatContainer.style.display = 'block';
+                    if (isHost) {
+                        waitingMessage.style.display = 'block';
+                    } else {
+                        waitingMessage.style.display = 'none';
+                        chatControls.style.display = 'flex';
+                    }
+                    
+                    // Initialize WebRTC
+                    initializeWebRTC(!roomParam);
+                    
+                    // Update page title for SEO and UX
+                    document.title = `Chat Room ${roomParam.substring(0, 6)}... | ${document.title}`;
+                }
+            });
+            
+            // Send message when button is clicked or Enter is pressed
+            sendButton.addEventListener('click', sendMessage);
+            messageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            function sendMessage() {
+                const message = messageInput.value.trim();
+                if (message && dataChannel) {
+                    // Add message to the chat
+                    addMessage(message, 'sent');
+                    
+                    // Send message through data channel
+                    dataChannel.send(message);
+                    
+                    // Clear input
+                    messageInput.value = '';
+                    
+                    // Track messages for analytics
+                    console.log('Message sent:', message.length, 'characters');
+                }
+            }
+            
+            function addMessage(message, type) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message', type);
+                messageElement.textContent = message;
+                messages.appendChild(messageElement);
+                
+                // Scroll to bottom
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+                
+                // Update title notification if tab is not active
+                if (type === 'received' && document.hidden) {
+                    unreadMessages++;
+                    updateTitle(unreadMessages);
+                }
+            }
+            
+            // Reset notification when tab becomes active
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) {
+                    unreadMessages = 0;
+                    updateTitle();
+                }
+            });
+            
+            function showError(message) {
+                const errorElement = document.createElement('div');
+                errorElement.classList.add('alert', 'alert-danger');
+                errorElement.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+                document.getElementById('generatorSection').prepend(errorElement);
+                
+                setTimeout(() => {
+                    errorElement.remove();
+                }, 5000);
+            }
+            
+            // Simple WebRTC implementation using a data channel
+            function initializeWebRTC(isInitiator) {
+                // This is a simplified version - in a real app, you'd need signaling and ICE servers
+                
+                // Create a peer connection
+                const configuration = { 
+                    iceServers: [
+                        { urls: 'stun:stun.l.google.com:19302' },
+                        { urls: 'stun:stun1.l.google.com:19302' }
+                    ] 
+                };
+                peerConnection = new RTCPeerConnection(configuration);
+                
+                if (isInitiator) {
+                    // Create a data channel
+                    dataChannel = peerConnection.createDataChannel('chat');
+                    setupDataChannel(dataChannel);
+                    
+                    // Create an offer
+                    peerConnection.createOffer()
+                        .then(offer => peerConnection.setLocalDescription(offer))
+                        .then(() => {
+                            // In a real app, you'd send the offer to the other peer via a signaling server
+                            console.log('Offer created', peerConnection.localDescription);
+                        })
+                        .catch(error => {
+                            console.error('Error creating offer:', error);
+                            showError('Failed to initialize chat. Please try again.');
+                        });
+                } else {
+                    // Set up handler for incoming data channel
+                    peerConnection.ondatachannel = event => {
+                        dataChannel = event.channel;
+                        setupDataChannel(dataChannel);
+                    };
+                    
+                    // In a real app, you'd receive an offer from the signaling server and create an answer
+                    // This is simplified for demonstration
+                }
+                
+                // ICE candidate handler
+                peerConnection.onicecandidate = event => {
+                    if (event.candidate) {
+                        // In a real app, you'd send the candidate to the other peer
+                        console.log('ICE candidate:', event.candidate);
+                    }
+                };
+                
+                // Connection state handling
+                peerConnection.onconnectionstatechange = () => {
+                    console.log('Connection state:', peerConnection.connectionState);
+                    if (peerConnection.connectionState === 'disconnected' || 
+                        peerConnection.connectionState === 'failed') {
+                        addMessage('The other person has left the chat.', 'info-message');
+                        chatControls.style.display = 'none';
+                    }
+                };
+            }
+            
+            function setupDataChannel(channel) {
+                channel.onopen = () => {
+                    console.log('Data channel is open');
+                    waitingMessage.style.display = 'none';
+                    chatControls.style.display = 'flex';
+                    addMessage('You are now connected! Start chatting.', 'info-message');
+                    
+                    // Focus message input for better UX
+                    messageInput.focus();
+                };
+                
+                channel.onclose = () => {
+                    console.log('Data channel is closed');
+                    addMessage('The connection was closed.', 'info-message');
+                    chatControls.style.display = 'none';
+                };
+                
+                channel.onmessage = event => {
+                    addMessage(event.data, 'received');
+                };
+            }
+        });
+    </script>
+</body>
+</html>
